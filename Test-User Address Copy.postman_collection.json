@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "de911c4d-e0c2-4abb-aaf3-0bde427691ea",
+		"name": "Test-User Address Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34925631"
+	},
+	"item": [
+		{
+			"name": "User Sign In",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "As a user , ishould be able to login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"User should be able to sign in to the application\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"response body should match token\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"token\");\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5MzlhNDJmZWNiODFhOWRkODQ4ZWMiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiaXBvc3Rlc3Rpbmc5MTFAZ21haWwuY29tIiwiaWF0IjoxNzIwNDc1OTIwLCJleHAiOjE3MjA1NjIzMjB9.HoUJMI1Za-FhC-7TsVj4AtLn07xyD1Knz2xCmAQkHY4"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"Test@123\",\n  \"email\": \"ipostesting911@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://staging-be-ecom.techserve4u.com/api/user/signin",
+									"protocol": "https",
+									"host": [
+										"staging-be-ecom",
+										"techserve4u",
+										"com"
+									],
+									"path": [
+										"api",
+										"user",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": []
+				},
+				{
+					"name": "As a user , ishould be able to login Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5MzlhNDJmZWNiODFhOWRkODQ4ZWMiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiaXBvc3Rlc3Rpbmc5MTFAZ21haWwuY29tIiwiaWF0IjoxNzIwNDc1OTIwLCJleHAiOjE3MjA1NjIzMjB9.HoUJMI1Za-FhC-7TsVj4AtLn07xyD1Knz2xCmAQkHY4"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"\",\n  \"email\": \"ipostesting911@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-be-ecom.techserve4u.com/api/user/signin",
+							"protocol": "https",
+							"host": [
+								"staging-be-ecom",
+								"techserve4u",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Add address",
+			"item": [
+				{
+					"name": "As a user, I should be able to add the address to the application",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5MzlhNDJmZWNiODFhOWRkODQ4ZWMiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiaXBvc3Rlc3Rpbmc5MTFAZ21haWwuY29tIiwiaWF0IjoxNzIwNTM1MTE1LCJleHAiOjE3MjA2MjE1MTV9.cfFNUehIGUO922esQSA1XVPzvUtQv-lxQ9WaXYSEJeo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5MzlhNDJmZWNiODFhOWRkODQ4ZWMiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiaXBvc3Rlc3Rpbmc5MTFAZ21haWwuY29tIiwiaWF0IjoxNzIwNDc1OTIwLCJleHAiOjE3MjA1NjIzMjB9.HoUJMI1Za-FhC-7TsVj4AtLn07xyD1Knz2xCmAQkHY4"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"devi\",\r\n  \"mobileNumber\": \"2483789497\",\r\n  \"state\": \"michigan\",\r\n  \"city\": \"ohi\",\r\n  \"zip\": \"67543\",\r\n  \"address\": \"jubilee ln\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://staging-be-ecom.techserve4u.com/api/address/create",
+							"protocol": "https",
+							"host": [
+								"staging-be-ecom",
+								"techserve4u",
+								"com"
+							],
+							"path": [
+								"api",
+								"address",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get address",
+			"item": [
+				{
+					"name": "As a user, i should be able to see the address added",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5MzlhNDJmZWNiODFhOWRkODQ4ZWMiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiaXBvc3Rlc3Rpbmc5MTFAZ21haWwuY29tIiwiaWF0IjoxNzIwNDc1OTIwLCJleHAiOjE3MjA1NjIzMjB9.HoUJMI1Za-FhC-7TsVj4AtLn07xyD1Knz2xCmAQkHY4"
+							}
+						],
+						"url": {
+							"raw": "https://staging-be-ecom.techserve4u.com/api/address/getaddress",
+							"protocol": "https",
+							"host": [
+								"staging-be-ecom",
+								"techserve4u",
+								"com"
+							],
+							"path": [
+								"api",
+								"address",
+								"getaddress"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update Address",
+			"item": [
+				{
+					"name": "As a user , I should be able to update the address field",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Address",
+			"item": []
+		},
+		{
+			"name": "Data Driven",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "As a user, I should be able to add the address to the application Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"success\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{json_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5MzlhNDJmZWNiODFhOWRkODQ4ZWMiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiaXBvc3Rlc3Rpbmc5MTFAZ21haWwuY29tIiwiaWF0IjoxNzIwNDc1OTIwLCJleHAiOjE3MjA1NjIzMjB9.HoUJMI1Za-FhC-7TsVj4AtLn07xyD1Knz2xCmAQkHY4"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"{{username}}\",\r\n  \"mobileNumber\": \"{{mobile_number}}\",\r\n  \"state\": \"{{state}}\",\r\n  \"city\": \"{{city}}\",\r\n  \"zip\": \"45678\",\r\n  \"address\": \"{{address}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://staging-be-ecom.techserve4u.com/api/address/create",
+									"protocol": "https",
+									"host": [
+										"staging-be-ecom",
+										"techserve4u",
+										"com"
+									],
+									"path": [
+										"api",
+										"address",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
